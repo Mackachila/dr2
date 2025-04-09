@@ -1,0 +1,351 @@
+/* .service-card System */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 300px;
+}
+
+.notification-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 12px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+}
+
+.notification-card.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-header {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    color: white;
+}
+
+.notification-title {
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.notification-time {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.notification-close {
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.notification-close:hover {
+    opacity: 1;
+}
+
+.notification-body {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+}
+
+.notification-footer {
+    height: 4px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.notification-progress {
+    height: 100%;
+    width: 0;
+    background-color: var(--secondary);
+    transition: width linear;
+}
+
+/* Animation for avatar */
+.notification-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid white;
+}
+
+/* Phone number styling */
+
+.phone-container {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+  }
+
+  .phone-number {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 30px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .phone-icon {
+    font-size: 1.2em;
+  }
+
+  /* Animations */
+  @keyframes zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+
+  @keyframes turn {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(180deg); }
+  }
+
+  .zoom { animation: zoom 1s infinite; }
+  .spin { animation: spin 1s linear infinite; }
+  .shake { animation: shake 1s infinite; }
+  .turn { animation: turn 1s ease infinite; }
+
+
+  /* Overlay and Card Styles */
+  .contact-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+
+  .contact-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    overflow: hidden;
+    animation: slide-up 0.3s ease;
+  }
+
+  @keyframes slide-up {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .contact-card-header {
+    background-color: #006241;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .contact-card-header h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .contact-card-body {
+    padding: 15px;
+  }
+
+  .contact-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+  }
+
+  .contact-option:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-option:hover {
+    background-color: #f5f5f5;
+  }
+
+  .contact-option i {
+    font-size: 24px;
+    width: 30px;
+    text-align: center;
+  }
+
+  #call-option i {
+    color: #007bff;
+  }
+
+  #whatsapp-option i {
+    color: #25D366;
+  }
+
+  #sms-option i {
+    color: #FF5722;
+  }
+
+  .contact-option span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .services1-section {
+    padding: 20px 15px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.services-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #2d3748;
+    font-weight: 700;
+    position: relative;
+}
+
+.services-heading:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #4f46e5;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+.services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: #f9fafb;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.services-column {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    background: black;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    /* color: #333; */
+}
+
+.service-item:hover {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    transform: translateX(3px);
+}
+
+.service-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef2ff;
+    border-radius: 6px;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.service-name {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* Mobile optimization */
+@media (max-width: 650px) {
+    .services-list {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .services-column {
+        width: 100%;
+    }
+    
+    .service-item {
+        padding: 8px 10px;
+    }
+    
+    .service-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+    
+    .service-name {
+        font-size: 14px;
+    }
+}
+  
+  
+  

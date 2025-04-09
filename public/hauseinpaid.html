@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Healer - Dr. Adeola</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary: #006241;
+            --secondary: #fc8403;
+            --dark: #1e1e1e;
+            --light: #f5f5f5;
+            --accent: #e6b800;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #004730;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e07600;
+        }
+
+        .section-title {
+            position: relative;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background-color: var(--light);
+            padding-top: 80px;
+            position: relative;
+            margin-bottom: 0;
+        }
+
+        .carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-caption {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .carousel-caption h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-caption p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-expanded {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        .service-expanded p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .contact-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+        }
+
+        .phone-btn {
+            background-color: #007bff;
+        }
+
+        .phone-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .sms-btn {
+            background-color: #ff6b6b;
+        }
+
+        .sms-btn:hover {
+            background-color: #ff4f4f;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            font-size: 80px;
+            font-family: Georgia, serif;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: var(--primary);
+            opacity: 0.1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-style: italic;
+            color: #666;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .author-info p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .rating {
+            display: flex;
+            gap: 2px;
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 98, 65, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-col p, .footer-col a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #999;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 28px;
+            }
+            .carousel-caption h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                padding: 40px 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                height: 70vh;
+            }
+            
+            .carousel-caption h2 {
+                font-size: 28px;
+            }
+            
+            .carousel-caption p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+            }
+            
+            .carousel-caption h2 {
+                font-size: 24px;
+            }
+            
+            .carousel-caption p {
+                font-size: 14px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Dr. Adeola</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" style="background-image: url('MandaziwithChai.jpg')">
+                        <div class="carousel-caption">
+                            <h2>Traditional Healing & Spiritual Guidance</h2>
+                            <p>Find solutions to life's problems with ancient wisdom and proven methods that work</p>
+                            <a href="#services" class="btn">Explore Services</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('mbaazi.jpg')">
+                        <div class="carousel-caption">
+                            <h2>Recover Lost Items & Restore Fortune</h2>
+                            <p>I specialize in spiritual methods to recover what belongs to you and restore your prosperity</p>
+                            <a href="#contact" class="btn">Consult Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('mchuzi.jpg')">
+                        <div class="carousel-caption">
+                            <h2>Trusted by Thousands</h2>
+                            <p>With over 20 years of experience, I've helped countless people overcome their challenges</p>
+                            <a href="#testimonials" class="btn btn-secondary">See Testimonials</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-container">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('pilau.webp')"></div>
+                    <div class="service-content">
+                        <h3>Recover Lost Items</h3>
+                        <p>Using ancient spiritual techniques to locate and recover stolen or lost valuables.</p>
+                        <button class="btn btn-secondary toggle-details">Show Details</button>
+                    </div>
+                    <div class="service-expanded">
+                        <p>I use traditional methods, spiritual guidance, and divination to help you recover your lost or stolen items. This service has helped many find their misplaced valuables, stolen property, and even lost loved ones.</p>
+                        <p>The process is confidential and begins with a consultation to understand the circumstances of the loss. I then perform the necessary rituals and spiritual work to locate the items.</p>
+                        <div class="contact-options">
+                            <a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </a>
+                            <a href="sms:+1234567890" class="contact-btn sms-btn">
+                                <i class="fas fa-sms"></i> Text
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('supper.jpg')"></div>
+                    <div class="service-content">
+                        <h3>Financial Prosperity</h3>
+                        <p>Rituals and spiritual guidance to attract wealth and financial abundance.</p>
+                        <button class="btn btn-secondary toggle-details">Show Details</button>
+                    </div>
+                    <div class="service-expanded">
+                        <p>I offer powerful spiritual techniques to remove obstacles to wealth and open pathways to financial abundance. These methods have been used for generations to help people attract prosperity.</p>
+                        <p>The process involves cleansing negative energies affecting your finances, creating spiritual connections to wealth, and providing guidance on actions to take in the physical world.</p>
+                        <div class="contact-options">
+                            <a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </a>
+                            <a href="sms:+1234567890" class="contact-btn sms-btn">
+                                <i class="fas fa-sms"></i> Text
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('lunch.jpg')"></div>
+                    <div class="service-content">
+                        <h3>Catch a Thief</h3>
+                        <p>Spiritual methods to identify and expose those who have wronged you.</p>
+                        <button class="btn btn-secondary toggle-details">Show Details</button>
+                    </div>
+                    <div class="service-expanded">
+                        <p>Using traditional spiritual techniques, I can help identify those who have stolen from you or caused harm. This service is conducted with care and discretion, focusing on justice rather than revenge.</p>
+                        <p>The process involves spiritual consultations, divination, and rituals that can reveal hidden truths and bring closure to those who have been wronged.</p>
+                        <div class="contact-options">
+                            <a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </a>
+                            <a href="sms:+1234567890" class="contact-btn sms-btn">
+                                <i class="fas fa-sms"></i> Text
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('swahili1.png')"></div>
+                    <div class="service-content">
+                        <h3>Spiritual Protection</h3>
+                        <p>Defensive rituals and talismans to protect you from negative energies and harm.</p>
+                        <button class="btn btn-secondary toggle-details">Show Details</button>
+                    </div>
+                    <div class="service-expanded">
+                        <p>I provide powerful spiritual protection through traditional methods to shield you from negative energies, spiritual attacks, and harmful intentions from others.</p>
+                        <p>My protection services include cleansing rituals, protective talismans, and guidance on maintaining your spiritual boundaries against harmful influences.</p>
+                        <div class="contact-options">
+                            <a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </a>
+                            <a href="sms:+1234567890" class="contact-btn sms-btn">
+                                <i class="fas fa-sms"></i> Text
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('swahili2.jpeg')"></div>
+                    <div class="service-content">
+                        <h3>Relationship Harmony</h3>
+                        <p>Restore balance and love in relationships using traditional spiritual methods.</p>
+                        <button class="btn btn-secondary toggle-details">Show Details</button>
+                    </div>
+                    <div class="service-expanded">
+                        <p>I help couples and families restore harmony, love, and understanding in their relationships. Through spiritual guidance and traditional methods, I address the root causes of discord.</p>
+                        <p>My relationship services include compatibility assessments, conflict resolution rituals, and guidance on maintaining healthy spiritual connections with loved ones.</p>
+                        <div class="contact-options">
+                            <a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </a>
+                            <a href="sms:+1234567890" class="contact-btn sms-btn">
+                                <i class="fas fa-sms"></i> Text
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('swahili3.jpeg')"></div>
+                    <div class="service-content">
+                        <h3>Health & Wellness</h3>
+                        <p>Traditional healing methods to improve physical and spiritual well-being.</p>
+                        <button class="btn btn-secondary toggle-details">Show Details</button>
+                    </div>
+                    <div class="service-expanded">
+                        <p>I offer traditional healing methods to address various health concerns through spiritual cleansing, herbal remedies, and energy healing techniques that have been passed down through generations.</p>
+                        <p>My wellness services complement conventional medical treatments and focus on restoring balance to the body, mind, and spirit for overall well-being.</p>
+                        <div class="contact-options">
+                            <a href="https://wa.me/1234567890" class="contact-btn whatsapp-btn">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call
+                            </a>
+                            <a href="sms:+1234567890" class="contact-btn sms-btn">
+                                <i class="fas fa-sms"></i> Text
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonials-container">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Dr. Adeola helped me recover my stolen jewelry that had been in my family for generations. His methods are truly remarkable and effective. I am forever grateful for his assistance."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('samakiwakupaka.jpg')"></div>
+                        <div class="author-info">
+                            <h4>Amina K.</h4>
+                            <p>Lagos, Nigeria</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "After struggling financially for years, I consulted Dr. Adeola. Within weeks of following his guidance, I received an unexpected job offer that doubled my income. His spiritual work truly opened doors for me."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('breakfast.jpg')"></div>
+                        <div class="author-info">
+                            <h4>James O.</h4>
+                            <p>Accra, Ghana</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Thanks to Dr. Adeola's spiritual protection, my business has flourished despite attempts from competitors to sabotage my work. His protective charms have kept negative energies away from my shop."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img" style="background-image: url('MandaziwithChai.jpg')"></div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Nairobi, Kenya</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" class="form-control" required>
+                        <option value="" selected disabled>Select a service</option>
+                        <option value="lost-items">Recover Lost Items</option>
+                        <option value="financial">Financial Prosperity</option>
+                        <option value="thief">Catch a Thief</option>
+                        <option value="protection">Spiritual Protection</option>
+                        <option value="relationship">Relationship Harmony</option>
+                        <option value="health">Health & Wellness</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">About Dr. Adeola</h2>
+            <div style="max-width: 800px; margin: 0 auto; background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+                <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 30px;">
+                    <div style="flex: 0 0 200px; height: 200px; border-radius: 50%; background-image: url('breakfast.jpg'); background-size: cover; background-position: center;"></div>
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="margin-bottom: 15px; color: var(--primary);">Traditional Healer with Decades of Experience</h3>
+                        <p style="margin-bottom: 15px; line-height: 1.6; color: #666;">Dr. Adeola is a renowned traditional healer who has studied ancient spiritual practices for over 30 years. His expertise has helped thousands of people overcome life's challenges and find peace, prosperity, and protection.</p>
+                        <p style="line-height: 1.6; color: #666;">Born into a family of traditional healers, Dr. Adeola carries forward generations of wisdom while adapting his practices to modern concerns and needs.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 30px;">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">My Approach</h3>
+                    <p style="margin-bottom: 15px; line-height: 1.6; color: #666;">I combine traditional methods with a compassionate understanding of modern life's challenges. Every consultation begins with listening to your concerns and developing a personalized approach to address your specific situation.</p>
+                    <p style="margin-bottom: 15px; line-height: 1.6; color: #666;">My practice is rooted in respect for ancient wisdom while acknowledging the complexities of contemporary life. I offer practical solutions alongside spiritual guidance to help you achieve balance and overcome obstacles.</p>
+                    <p style="line-height: 1.6; color: #666;">Whether you're seeking help with financial matters, relationship challenges, health concerns, or spiritual protection, my goal is to provide effective solutions with integrity and respect.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Dr. Adeola</h3>
+                    <p>Traditional healer and spiritual guide with over 30 years of experience helping people overcome life's challenges.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <a href="#services">Recover Lost Items</a>
+                    <a href="#services">Financial Prosperity</a>
+                    <a href="#services">Catch a Thief</a>
+                    <a href="#services">Spiritual Protection</a>
+                    <a href="#services">Relationship Harmony</a>
+                    <a href="#services">Health & Wellness</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Healing Street, Lagos, Nigeria</p>
+                    <p><i class="fas fa-phone"></i> +234 123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@dradeola.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9am - 5pm</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dr. Adeola. All rights reserved. | Traditional Healer & Spiritual Guide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Carousel Functionality
+        const carouselInner = document.querySelector('.carousel-inner');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+        const slideCount = document.querySelectorAll('.carousel-item').length;
+
+        function goToSlide(index) {
+            if (index >= slideCount) index = 0;
+            if (index < 0) index = slideCount - 1;
+            
+            carouselInner.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update active dot
+            carouselDots.forEach(dot => dot.classList.remove('active'));
+            carouselDots[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+
+        // Add click event to dots
+        carouselDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto slide
+        setInterval(() => {
+            goToSlide(currentSlide + 1);
+        }, 5000);
+
+        // Service Card Details Toggle
+        const toggleButtons = document.querySelectorAll('.toggle-details');
+        
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.service-card');
+                const expandedContent = card.querySelector('.service-expanded');
+                
+                if (expandedContent.style.display === 'block') {
+                    expandedContent.style.display = 'none';
+                    this.textContent = 'Show Details';
+                } else {
+                    expandedContent.style.display = 'block';
+                    this.textContent = 'Hide Details';
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.querySelector('.contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Here you would normally send the data to a server
+            // For demonstration, we'll just show an alert
+            alert('Thank you for contacting Dr. Adeola. Your message has been received and we will get back to you shortly.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
